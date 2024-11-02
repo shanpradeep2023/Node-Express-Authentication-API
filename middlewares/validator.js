@@ -1,15 +1,30 @@
-const Joi = require('joi')
+const Joi = require('joi');
 
-exports.signupSchema = Joi.object({
+exports.signupValidation = Joi.object({
     email: Joi.string()
-            .min(6)
-            .max(60)
-            .required()
-            .email({
-        tlds: { allow: ['com','net','in']}
-    }),
+        .min(6)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net', 'in'] }
+        }),
 
     password: Joi.string()
-            .required()
-            .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?.*d).{8,}$'))
-})
+        .required()
+        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
+});
+
+exports.signinValidation = Joi.object({
+    email: Joi.string()
+        .min(6)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net', 'in'] }
+        }),
+
+    password: Joi.string()
+        .required()
+        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
+});
+
