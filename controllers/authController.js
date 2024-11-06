@@ -104,7 +104,7 @@ exports.sendValidationCode = async (req,res)=>{
             from: process.env.NODE_EMAIL_ADDRESS,
             to: existingUser.email,
             subject:"Verification Code for Express Authorization Project",
-            html: '<h1>' +codeValue + '</h1>'
+            html: '<h1>' +codeValue + '</h1><br><h5>This is a system generated email.Do not reply as the mail box is not monitored</h5>'
         })
 
         if(info.accepted[0] === existingUser.email){
@@ -222,7 +222,7 @@ exports.sendForgotPasswordCode = async (req,res)=>{
             from: process.env.NODE_EMAIL_ADDRESS,
             to: existingUser.email,
             subject:" Forgot Password Verification Code for Express Authorization Project",
-            html: '<h1>' +codeValue + '</h1>'
+            html: '<h1>' +codeValue + '</h1><br><h5>This is a system generated email.Do not reply as the mail box is not monitored</h5>'
         })
 
         if(info.accepted[0] === existingUser.email){
