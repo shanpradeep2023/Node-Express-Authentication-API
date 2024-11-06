@@ -49,3 +49,18 @@ exports.changePasswordValidation = Joi.object({
         .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
 });
 
+exports.forgotPasswordCodeAndPasswordValidation = Joi.object({
+    email: Joi.string()
+        .min(6)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net', 'in'] }
+        }),
+
+   providedCode: Joi.number().required(),
+   newPassword: Joi.string()
+        .required()
+        .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
+});
+
